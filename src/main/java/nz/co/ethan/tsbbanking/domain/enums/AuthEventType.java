@@ -1,0 +1,8 @@
+package nz.co.ethan.tsbbanking.domain.enums;
+
+public enum AuthEventType {
+    LOGIN_SUCCESS, LOGIN_FAILURE, VIEW_ACCOUNTS,
+    MFA_CHALLENGE, MFA_SUCCESS, MFA_FAILURE,
+    PASSWORD_RESET, ACCOUNT_LOCKED, LOGOUT,
+    CREATE_ACCOUNT, CREATE_USER, CREATE_CUSTOMER;
+}

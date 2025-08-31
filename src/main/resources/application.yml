@@ -1,0 +1,106 @@
+spring:
+  profiles:
+    default: dev
+  jackson:
+    time-zone: Pacific/Auckland
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: always
+
+logging:
+  level:
+    root: INFO
+    nz.co.ethan: INFO
+    org.springframework: WARN
+    org.mybatis: WARN
+    com.zaxxer.hikari: WARN
+
+auth:
+  staff-mfa-enabled: false
+  customer-mfa-enabled: false
+
+  access-ttl-seconds-platform: 900
+  access-ttl-seconds-retail: 3600
+  refresh-ttl-days: 30
+
+  jwt:
+    hs256-secret: ${JWT_SECRET:base64:3fQmGm7P2cT0o2dWkYyq6JpY6uE6kQ0sY0Q6jQm9yS8=}
+    issuer: "tsb-banking"
+    audience-platform: "platform"
+    audience-retail: "retail"
+
+  session:
+    refresh-ttl-days: 30
+
+management:
+  endpoints:
+    web.exposure.include: health,info
+  endpoint.health.probes.enabled: true
+
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+    default-model-rendering: model
+    default-models-expand-depth: 1
+    default-model-expand-depth: 3
+    persist-authorization: true
+
+---
+spring:
+  config.activate.on-profile: dev
+  datasource:
+    url: jdbc:postgresql://bank-core-dev.cijdeboseomo.ap-southeast-2.rds.amazonaws.com:5432/tsb?sslmode=require&currentSchema=public
+    username: masteruser
+    password: TG9Rk8v2Qh4Mx7L1Wp3Cz6Nd5Bs0JaVu
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    schemas: public
+    default-schema: public
+    clean-disabled: false
+
+
+mybatis-plus:
+  type-aliases-package: nz.co.ethan.tsbbanking.domain
+  type-handlers-package: nz.co.ethan.tsbbanking.config.typehandler
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: AUTO
+      table-underline: true
+
+---
+spring:
+  config.activate.on-profile: pg
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tsb?currentSchema=public
+    username: tsb
+    password: ${DB_PWD:changeMe}
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    schemas: public
+    default-schema: public
+    baseline-on-migrate: true
+
+mybatis-plus:
+  type-aliases-package: nz.co.ethan.tsbbanking.domain
+  configuration.map-underscore-to-camel-case: true
+  global-config.db-config:
+    id-type: AUTO
+    table-underline: true
+
+

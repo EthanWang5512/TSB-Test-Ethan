@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: tsb-app
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    # no environment variables are provided, the application will run entirely with the application.yml dev profile configuration — connecting directly to the AWS RDS instance. This is just for convenience in local testing and inspection

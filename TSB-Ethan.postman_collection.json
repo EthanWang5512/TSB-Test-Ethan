@@ -1,0 +1,621 @@
+{
+	"info": {
+		"_postman_id": "d851a819-26dd-425e-aacb-b0acf5e55624",
+		"name": "TSB-Ethan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18498203"
+	},
+	"item": [
+		{
+			"name": "User-NoToken",
+			"item": [
+				{
+					"name": "Reset-password-otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneE164\": \"0211237304\",\n    \"otp\": \"735942\",\n    \"newPassword\": \"SecurePass12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/reset-password-otp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"reset-password-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request-Reset-password-otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phoneE164\": \"0290005555\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/request-reset-password-otp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"request-reset-password-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Initial-password-email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"token\": \"JaQNOzbXrQKLpK1CGMAa_1aLWkZy1_DgCnW6GHa9zHQ\",\n    \"newPassword\": \"SecurePass12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin-Token",
+			"item": [
+				{
+					"name": "StaffLogin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"username\": \"admin\",\n    \"password\": \"123456\"\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/staff/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"staff",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "StaffLogout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "0NtM4gOCl61iC1Y8ijkmQT2fG4FTbzHKiBiGK5CFO38",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/staff/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"staff",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjEiLCJhdWQiOiJwbGF0Zm9ybSIsInNjb3BlIjoiUExBVEZPUk0iLCJjaGFubmVsIjoiU1RBRkYiLCJyb2xlcyI6WyJTWVNBRE1JTiJdLCJwZXJtcyI6WyJTWVNBRE1JTiJdLCJhbXIiOlsicHdkIl0sImlhdCI6MTc1NjY0NjUxMiwiZXhwIjoxNzU2NjQ3NDEyfQ.H16yhY77gwyDuct7bWL6YM2swr0yF7LcQ77dLcxB_WI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "cKim7AQ8sseg03tippiR5fJ7Kq7BZUxPnOSYiYw6qFs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"ethan@gmail.com\",\n  \"phone\": \"02900004444\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send-user-verify-email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjEiLCJhdWQiOiJwbGF0Zm9ybSIsInNjb3BlIjoiUExBVEZPUk0iLCJjaGFubmVsIjoiU1RBRkYiLCJyb2xlcyI6WyJTWVNBRE1JTiJdLCJwZXJtcyI6WyJTWVNBRE1JTiJdLCJhbXIiOlsicHdkIl0sImlhdCI6MTc1NjYzNDA2NiwiZXhwIjoxNzU2NjM0OTY2fQ.SBn_n94tIdugXJC3GP1c_fdX8XigRwz6V0eDmP8yo8M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "QNB6R7MXRfzMUDWNPBZJ2Db_FURKqNew4UrVSw2yGew",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"email\": \"ethan@gmail.com\",\n    \"username\": \"022679340\" \n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/send-verify-email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"send-verify-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjEiLCJhdWQiOiJwbGF0Zm9ybSIsInNjb3BlIjoiUExBVEZPUk0iLCJjaGFubmVsIjoiU1RBRkYiLCJyb2xlcyI6WyJTWVNBRE1JTiJdLCJwZXJtcyI6WyJTWVNBRE1JTiJdLCJhbXIiOlsicHdkIl0sImlhdCI6MTc1NjU2MDc4MiwiZXhwIjoxNzU2NTYxNjgyfQ.nDaEiFJuP6aQlVW8ZaFz-6nqI448GnUKWfbtcuc3Ads",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "yC0PTlOP9_KQlqqoBwCrqQeffC8qbGmWsJy_44eCr9w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jack\",\n  \"lastName\": \"Ma\",\n  \"preferredName\": \"Ethan\",\n  \"email\": \"ethan.zhang@example.com\",\n  \"contactNumber\": \"0212345678\",\n  \"addressLine1\": \"12 Example Street\",\n  \"addressLine2\": \"Unit 3\",\n  \"suburb\": \"Albany\",\n  \"city\": \"Auckland\",\n  \"region\": \"Auckland\",\n  \"postcode\": \"0632\",\n  \"country\": \"New Zealand\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BindCusomerwithUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjEiLCJhdWQiOiJwbGF0Zm9ybSIsInNjb3BlIjoiUExBVEZPUk0iLCJjaGFubmVsIjoiU1RBRkYiLCJyb2xlcyI6WyJTWVNBRE1JTiJdLCJwZXJtcyI6WyJTWVNBRE1JTiJdLCJhbXIiOlsicHdkIl0sImlhdCI6MTc1NjU2MDc4MiwiZXhwIjoxNzU2NTYxNjgyfQ.nDaEiFJuP6aQlVW8ZaFz-6nqI448GnUKWfbtcuc3Ads",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "yC0PTlOP9_KQlqqoBwCrqQeffC8qbGmWsJy_44eCr9w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": 1,\n    \"username\": \"71969334\",\n    \"role\": \"ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers/users/bind",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"users",
+								"bind"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterAccount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjEiLCJhdWQiOiJwbGF0Zm9ybSIsInNjb3BlIjoiUExBVEZPUk0iLCJjaGFubmVsIjoiU1RBRkYiLCJyb2xlcyI6WyJTWVNBRE1JTiJdLCJwZXJtcyI6WyJTWVNBRE1JTiJdLCJhbXIiOlsicHdkIl0sImlhdCI6MTc1NjU2MDc4MiwiZXhwIjoxNzU2NTYxNjgyfQ.nDaEiFJuP6aQlVW8ZaFz-6nqI448GnUKWfbtcuc3Ads",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "yC0PTlOP9_KQlqqoBwCrqQeffC8qbGmWsJy_44eCr9w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": 1,\n  \"nickname\": \"My First Savings\",\n  \"accountType\": \"SAVINGS_ON_CALL\",\n  \"currency\": \"NZD\",\n  \"paperDelivery\": false,\n  \"role\": \"PRIMARY\",\n  \"operatorUserId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/account/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User-Token",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"username\": \"10000001\",\n    \"password\": \"123456\"\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "ptAGNU6znSZqOIlzhNvrpF8tsLr6Idi2qjYRwwV9AKU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzU2Mzg3Nzk4LCJleHAiOjE3NTYzODg2OTh9.srvVpDZ7II9MuEGkvhd3fkxMVf7DW2-hp5C91jFImNw\",\n    \"refreshToken\": \"ptAGNU6znSZqOIlzhNvrpF8tsLr6Idi2qjYRwwV9AKU\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ShowAccountList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjMiLCJhdWQiOiJyZXRhaWwiLCJzY29wZSI6IlJFVEFJTCIsImNoYW5uZWwiOiJDVVNUT01FUiIsImFtciI6WyJwd2QiXSwiaWF0IjoxNzU2NjQzOTY1LCJleHAiOjE3NTY2NDQ4NjV9.gmYMJpkm96hTZVIJKwissPmfA755bYda8YJQYgpx3q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "IeOVaDk6ZXjpOg-jK_P3INL4LCVWeJNTwpcIAfiJack",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": 1,\n  \"type\": null,\n  \"status\": null,\n  \"page\": 1,\n  \"size\": 20\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/account/customer/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"customer",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjMiLCJhdWQiOiJyZXRhaWwiLCJzY29wZSI6IlJFVEFJTCIsImNoYW5uZWwiOiJDVVNUT01FUiIsImFtciI6WyJwd2QiXSwiaWF0IjoxNzU2NjQwNjU4LCJleHAiOjE3NTY2NDE1NTh9.azAs5jH9Tt21qsiCRwhNdKwuy9REmzlAbVgesmNNPME",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "g7vr-yYGwvYTAR-NGMjBuucb0D9TbU5MTbuR71_aRc8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fromAccountNumber\": \"01-0980-0114667-19\",\n  \"toAccountNumber\": \"01-1503-7127842-14\",\n  \"amount\": 50.00,\n  \"currency\": \"NZD\",\n  \"reference\": \"Power\",\n  \"clientRequestId\": \"Client-generated unique request ID, input a random string 4f82-bdf0-7e44323323241\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/account/transfer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ShowAccountLedgerList",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0c2ItYmFua2luZyIsInN1YiI6IjMiLCJhdWQiOiJyZXRhaWwiLCJzY29wZSI6IlJFVEFJTCIsImNoYW5uZWwiOiJDVVNUT01FUiIsImFtciI6WyJwd2QiXSwiaWF0IjoxNzU2NjQzOTY1LCJleHAiOjE3NTY2NDQ4NjV9.gmYMJpkm96hTZVIJKwissPmfA755bYda8YJQYgpx3q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Refresh-Token",
+								"value": "IeOVaDk6ZXjpOg-jK_P3INL4LCVWeJNTwpcIAfiJack",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accountNumber\": \"01-0980-0114667-19\",\n    \"page\": 1,\n  \"size\": 20\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/account/ledgers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"account",
+								"ledgers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
