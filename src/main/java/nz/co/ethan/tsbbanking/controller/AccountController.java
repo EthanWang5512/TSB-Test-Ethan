@@ -124,4 +124,29 @@ public class AccountController {
         return ResponseEntity.ok(accountService.createInternalTransfer(req));
     }
 
+    // -------------------- List account ledgers --------------------
+    @PostMapping("/ledgers")
+    @Operation(
+            summary = "List account ledgers (staff)",
+            description = "Paged account ledger entries (credits/debits) for a given account.",
+            security = {
+                    @SecurityRequirement(name = "bearerAuth"),
+                    @SecurityRequirement(name = "refreshAuth")
+            },
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    required = true,
+                    content = @Content(schema = @Schema(implementation = ListAccountLedgerRequest.class))
+            ),
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Paged ledger entries",
+                            content = @Content(schema = @Schema(implementation = PageResult.class))),
+                    @ApiResponse(responseCode = "400", description = "Invalid query"),
+                    @ApiResponse(responseCode = "401", description = "Unauthorized")
+            }
+    )
+    public PageResult<AccountLedger> listLedgers(
+            @org.springframework.web.bind.annotation.RequestBody @Valid ListAccountLedgerRequest req) {
+        return accountService.listAccountLedger(req);
+    }    
+
 }
